@@ -1,0 +1,174 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <GridPane style="-fx-background-color: #1C2A39;" BorderPane.alignment="CENTER">
+        <columnConstraints>
+            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+          <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+        </columnConstraints>
+        <rowConstraints>
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+          <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+        </rowConstraints>
+         <children>
+            <JFXButton fx:id="nine" prefHeight="110.0" prefWidth="179.0" text="9" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="eight" prefHeight="110.0" prefWidth="179.0" text="8" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="seven" prefHeight="110.0" prefWidth="179.0" text="7" textFill="#e8e3e3" GridPane.rowIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="six" prefHeight="110.0" prefWidth="179.0" text="6" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="five" prefHeight="110.0" prefWidth="179.0" text="5" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="four" prefHeight="110.0" prefWidth="179.0" text="4" textFill="#e8e3e3" GridPane.rowIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="three" prefHeight="110.0" prefWidth="179.0" text="3" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="two" prefHeight="110.0" prefWidth="179.0" text="2" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="one" prefHeight="110.0" prefWidth="179.0" text="1" textFill="#e8e3e3" GridPane.rowIndex="3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="zero" prefHeight="110.0" prefWidth="179.0" text="0" textFill="#e8e3e3" GridPane.rowIndex="4">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="110.0" prefWidth="179.0" text="00" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="4">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="point" prefHeight="110.0" prefWidth="179.0" text="." textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="4">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="110.0" prefWidth="179.0" text="+/" textFill="#e8e3e3" GridPane.columnIndex="1">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton prefHeight="110.0" prefWidth="179.0" text="\%" textFill="#e8e3e3" GridPane.columnIndex="2">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+            <JFXButton fx:id="clear" prefHeight="110.0" prefWidth="179.0" text="C" textFill="#e8e3e3">
+               <font>
+                  <Font size="36.0" />
+               </font>
+            </JFXButton>
+         </children>
+      </GridPane>
+   </center>
+   <top>
+      <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <AnchorPane prefHeight="100.0" prefWidth="555.0">
+               <children>
+                  <JFXTextField fx:id="input" layoutY="34.0" prefHeight="66.0" prefWidth="399.0" />
+                  <Label fx:id="prom" layoutX="34.0" layoutY="14.0" prefHeight="17.0" prefWidth="325.0" />
+               </children>
+            </AnchorPane>
+         </children>
+      </HBox>
+   </top>
+   <bottom>
+      <JFXButton prefHeight="65.0" prefWidth="403.0" text="=" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="36.0" />
+         </font>
+      </JFXButton>
+   </bottom>
+   <right>
+      <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+         <children>
+            <GridPane prefHeight="386.0" prefWidth="100.0" style="-fx-background-color: #21A4EC;">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <JFXButton prefHeight="85.0" prefWidth="108.0" text="C" textFill="#e8e3e3">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="85.0" prefWidth="108.0" text="/" textFill="#e8e3e3" GridPane.rowIndex="1">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="85.0" prefWidth="108.0" text="X" textFill="#e8e3e3" GridPane.rowIndex="2">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="85.0" prefWidth="108.0" text="-" textFill="#e8e3e3" GridPane.rowIndex="3">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </JFXButton>
+                  <JFXButton prefHeight="85.0" prefWidth="108.0" text="+" textFill="#eeecec" GridPane.rowIndex="4">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </JFXButton>
+               </children>
+            </GridPane>
+         </children>
+      </VBox>
+   </right>
+</BorderPane>
