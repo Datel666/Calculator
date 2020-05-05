@@ -3,20 +3,13 @@ package sample;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-
-import javafx.beans.value.ChangeListener;
-import javafx.beans.value.ObservableValue;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
 
 
 public class Controller {
-
-    public Main kek = new Main();
-
-
 
     @FXML
     public JFXButton zero;
@@ -59,195 +52,114 @@ public class Controller {
     @FXML
     public CheckBox ruleCheck;
 
-
-
-
-
     private double fnumber;
     private double snumber;
     private String operation ="";
 
+    public Main kek = new Main();
+    public Methods mets = new Methods();
+
+
+
+
     @FXML
     public void point_click(){
-        String oldvalue = input.getText();
-        String set = ".";
-        input.setText(oldvalue+set);
+       mets.pointSet(input);
     }
     @FXML
     public void zero_click(){
-        String oldvalue = input.getText();
-        String set = "0";
-        input.setText(oldvalue+set);
+        mets.zeroSet(input);
     }
     @FXML
     public void zerozero_click() {
-        String oldvalue = input.getText();
-        String set = "00";
-        input.setText(oldvalue+set);
+        mets.doublezeroSet(input);
     }
     @FXML
     public void one_click(){
-        String oldvalue = input.getText();
-        String set = "1";
-        input.setText(oldvalue+set);
+        mets.oneSet(input);
     }
 
     @FXML
     public void two_click(){
-        String oldvalue = input.getText();
-        String set = "2";
-        input.setText(oldvalue+set);
+        mets.twoSet(input);
     }
     @FXML
     public void three_click(){
-        String oldvalue = input.getText();
-        String set = "3";
-        input.setText(oldvalue+set);
+        mets.threeSet(input);
     }
     @FXML
     public void four_click(){
-        String oldvalue = input.getText();
-        String set = "4";
-        input.setText(oldvalue+set);
+        mets.fourSet(input);
     }
     @FXML
     public void five_click(){
-        String oldvalue = input.getText();
-        String set = "5";
-        input.setText(oldvalue+set);
+        mets.fiveSet(input);
     }
     @FXML
     public void six_click(){
-        String oldvalue = input.getText();
-        String set = "6";
-        input.setText(oldvalue+set);
+        mets.sixSet(input);
     }
     @FXML
     public void seven_click(){
-        String oldvalue = input.getText();
-        String set = "7";
-        input.setText(oldvalue+set);
+        mets.sevenSet(input);
     }
     @FXML
     public void eight_click(){
-        String oldvalue = input.getText();
-        String set = "8";
-        input.setText(oldvalue+set);
+        mets.eightSet(input);
     }
     @FXML
     public void nine_click(){
-        String oldvalue = input.getText();
-        String set = "9";
-        input.setText(oldvalue+set);
+        mets.nineSet(input);
     }
     @FXML
     public void plus_click(){
-        if (operation =="")
-        {
-            String value = input.getText();
-            double valuenumber = Double.parseDouble(value);
-            this.fnumber = valuenumber;
-            input.setText("");
-            prom.setText(value +"+");
-            operation = "+";
-        }
 
-
+        Wrapper fvar = new Wrapper(this.fnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.plusSet(input,opvar,fvar,prom);
+        operation = (String)opvar.ref1;
+        this.fnumber = (Double)fvar.ref1;
     }
     @FXML
     public void minus_click(){
-        if (operation =="")
-        {
-            String value = input.getText();
-            double valuenumber = Double.parseDouble(value);
-            this.fnumber = valuenumber;
-            input.setText("");
-            prom.setText(value +"-");
-            operation = "-";
-        }
-
+        Wrapper fvar = new Wrapper(this.fnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.minusSet(input,opvar,fvar,prom);
+        operation = (String)opvar.ref1;
+        this.fnumber = (Double)fvar.ref1;
     }
     @FXML
     public void multi_click(){
-        if (operation =="")
-        {
-        String value = input.getText();
-        double valuenumber = Double.parseDouble(value);
-        this.fnumber = valuenumber;
-        input.setText("");
-        prom.setText(value +"x");
-        operation = "x";
-        }
+        Wrapper fvar = new Wrapper(this.fnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.multiSet(input,opvar,fvar,prom);
+        operation = (String)opvar.ref1;
+        this.fnumber = (Double)fvar.ref1;
     }
     @FXML
     public void divide_click(){
-        if(operation == "")
-        {
-            String value = input.getText();
-            double valuenumber = Double.parseDouble(value);
-            this.fnumber = valuenumber;
-            input.setText("");
-            prom.setText(value +"/");
-            operation = "/";
-        }
-
+        Wrapper fvar = new Wrapper(this.fnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.divideSet(input,opvar,fvar,prom);
+        operation = (String)opvar.ref1;
+        this.fnumber = (Double)fvar.ref1;
     }
     @FXML
     public void sqrt_click() {
-
-            String value = input.getText();
-            double valuenumber = Double.parseDouble(value);
-            this.fnumber = valuenumber;
-            prom.setText("√" + value);
-            input.setText(String.valueOf(Math.sqrt(valuenumber)));
-
+        Wrapper fvar = new Wrapper(this.fnumber);
+        mets.sqrtValue(input,fvar,prom);
+        this.fnumber = (Double)fvar.ref1;
     }
-
 
     @FXML
     public void equal_click(){
-        switch(operation){
-            case "+":
-                String value = input.getText();
-                this.snumber = Double.parseDouble(value);
-                double system = this.fnumber+this.snumber;
-                input.setText(String.valueOf(system));
-                String oldprom = prom.getText();
-                prom.setText((oldprom+value));
-                operation="";
-                break;
-
-            case "-":
-                String valueplus = input.getText();
-                this.snumber = Double.parseDouble(valueplus);
-                double systemplus = this.fnumber-this.snumber;
-                input.setText(String.valueOf(systemplus));
-                String oldpromplus = prom.getText();
-                prom.setText((oldpromplus+valueplus));
-                operation="";
-                break;
-            case "x":
-                String valuemulti = input.getText();
-                this.snumber = Double.parseDouble(valuemulti);
-                double systemmulti = this.fnumber*this.snumber;
-                input.setText(String.valueOf(systemmulti));
-                String oldprommulti = prom.getText();
-                prom.setText((oldprommulti+valuemulti));
-                operation="";
-                break;
-
-            case "/":
-                String valuediv = input.getText();
-                this.snumber = Double.parseDouble(valuediv);
-                double systemdiv = this.fnumber/this.snumber;
-                input.setText(String.valueOf(systemdiv));
-                String oldpromdiv = prom.getText();
-                prom.setText((oldpromdiv+valuediv));
-                operation="";
-                break;
-
-
-        }
+        Wrapper fvar = new Wrapper(this.fnumber);
+        Wrapper svar = new Wrapper(this.snumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.performLogic(input,opvar,svar,fvar,prom);
+        this.fnumber = (Double)fvar.ref1;
+        this.snumber = (Double)svar.ref1;
+        operation = (String)opvar.ref1;
     }
 
     @FXML
@@ -266,17 +178,14 @@ public class Controller {
     }
     @FXML
     public void undo_click() {
-        if(input.getText().length() !=0)
-        {
-            input.setText(input.getText(0,input.getText().length()-1));
-        }
-        else{
-
-        }
-
+        mets.performUndo(input);
     }
 
-
-
+    public void Switch_click(ActionEvent actionEvent) {
+        two.setDisable(!two.isDisabled());
+        three.setDisable(!three.isDisabled());
+    }
 }
+
+
 
