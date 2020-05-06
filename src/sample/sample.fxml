@@ -1,191 +1,61 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXCheckBox?>
+<?import com.jfoenix.controls.JFXRadioButton?>
 <?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
-<?import javafx.scene.control.CheckBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.Menu?>
 <?import javafx.scene.control.MenuBar?>
 <?import javafx.scene.control.MenuItem?>
+<?import javafx.scene.control.ToggleGroup?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
-<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<GridPane xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
+<GridPane maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="757.0" prefWidth="770.0" style="-fx-background-color: #d9e4f1;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="sample.Controller">
    <columnConstraints>
       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
    </columnConstraints>
    <rowConstraints>
-      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-      <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+      <RowConstraints maxHeight="182.0" minHeight="10.0" prefHeight="30.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="259.0" minHeight="10.0" prefHeight="109.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="691.0" minHeight="10.0" prefHeight="539.0" vgrow="NEVER" />
+      <RowConstraints maxHeight="125.0" minHeight="10.0" prefHeight="79.0" vgrow="NEVER" />
    </rowConstraints>
    <children>
-      <MenuBar style="-fx-background-color: #ffffff;">
-        <menus>
-          <Menu mnemonicParsing="false" text="Вид">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Вещ. числа в формате IEEE754">
-                     <graphic>
-                        <CheckBox fx:id="ruleCheck" mnemonicParsing="false" onAction="#Switch_click" />
-                     </graphic>
-                  </MenuItem>
-            </items>
-          </Menu>
-          <Menu mnemonicParsing="false" text="Помощь">
-            <items>
-              <MenuItem mnemonicParsing="false" text="Помощь">
-                     <graphic>
-                        <Button mnemonicParsing="false" />
-                     </graphic>
-                  </MenuItem>
-            </items>
-          </Menu>
-        </menus>
-      </MenuBar>
-      <GridPane style="-fx-background-color: #d9e4f1;" GridPane.rowIndex="1">
+      <GridPane prefHeight="543.0" prefWidth="770.0" style="-fx-background-color: #d9e4f1;" GridPane.hgrow="NEVER" GridPane.rowIndex="2" GridPane.vgrow="NEVER">
          <columnConstraints>
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
-            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="10.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="369.0" minWidth="10.0" prefWidth="367.0" />
+            <ColumnConstraints hgrow="SOMETIMES" maxWidth="715.0" minWidth="10.0" prefWidth="403.0" />
          </columnConstraints>
          <rowConstraints>
-            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
-            <RowConstraints minHeight="10.0" prefHeight="10.0" vgrow="SOMETIMES" />
+            <RowConstraints minHeight="10.0" vgrow="NEVER" />
          </rowConstraints>
          <children>
-            <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="400.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
-               <center>
-                  <GridPane style="-fx-background-color: #1C2A39;" BorderPane.alignment="CENTER">
-                    <columnConstraints>
-                        <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
-                    </columnConstraints>
-                    <rowConstraints>
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
-                    </rowConstraints>
-                     <children>
-                        <JFXButton fx:id="nine" onAction="#nine_click" prefHeight="110.0" prefWidth="179.0" text="9" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="eight" onAction="#eight_click" prefHeight="110.0" prefWidth="179.0" text="8" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="seven" onAction="#seven_click" prefHeight="110.0" prefWidth="179.0" text="7" textFill="#e8e3e3" GridPane.rowIndex="1">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="six" onAction="#six_click" prefHeight="110.0" prefWidth="179.0" text="6" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="five" onAction="#five_click" prefHeight="110.0" prefWidth="179.0" text="5" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="four" onAction="#four_click" prefHeight="110.0" prefWidth="179.0" text="4" textFill="#e8e3e3" GridPane.rowIndex="2">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="three" onAction="#three_click" prefHeight="110.0" prefWidth="179.0" text="3" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="two" onAction="#two_click" prefHeight="110.0" prefWidth="179.0" text="2" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="one" onAction="#one_click" prefHeight="110.0" prefWidth="179.0" text="1" textFill="#e8e3e3" GridPane.rowIndex="3">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="zero" onAction="#zero_click" prefHeight="110.0" prefWidth="179.0" text="0" textFill="#e8e3e3" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="zerozero" onAction="#zerozero_click" prefHeight="110.0" prefWidth="179.0" text="00" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="point" onAction="#point_click" prefHeight="110.0" prefWidth="179.0" text="." textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="4">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="clear" onAction="#clear_click" prefHeight="110.0" prefWidth="179.0" text="CE" textFill="#e8e3e3" GridPane.columnIndex="1">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="clearall" onAction="#clearall_click" prefHeight="110.0" prefWidth="179.0" text="C" textFill="#e8e3e3" GridPane.columnIndex="2">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                        <JFXButton fx:id="undo" onAction="#undo_click" prefHeight="110.0" prefWidth="179.0" text="←" textFill="#e8e3e3">
-                           <font>
-                              <Font size="36.0" />
-                           </font>
-                        </JFXButton>
-                     </children>
-                  </GridPane>
-               </center>
-               <top>
-                  <HBox prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <AnchorPane prefHeight="101.0" prefWidth="400.0" style="-fx-background-color: #f8fbfe; -fx-border-color: #b7c0cb; -fx-border-width: 1px 1px 0px 1px;">
-                           <children>
-                              <JFXTextField fx:id="input" alignment="BOTTOM_RIGHT" editable="false" layoutX="6.0" layoutY="35.0" prefHeight="66.0" prefWidth="378.0" promptText="0">
-                                 <font>
-                                    <Font size="26.0" />
-                                 </font>
-                              </JFXTextField>
-                              <Label fx:id="prom" alignment="CENTER_RIGHT" layoutX="21.0" layoutY="14.0" prefHeight="21.0" prefWidth="366.0">
-                                 <font>
-                                    <Font size="15.0" />
-                                 </font>
-                              </Label>
-                           </children>
-                        </AnchorPane>
-                     </children>
-                  </HBox>
-               </top>
-               <bottom>
-                  <JFXButton fx:id="equal" onAction="#equal_click" prefHeight="77.0" prefWidth="428.0" style="-fx-background-color: #cad43b; -fx-border-color: #bac6d4;" text="=" BorderPane.alignment="CENTER">
-                     <font>
-                        <Font size="36.0" />
-                     </font>
-                  </JFXButton>
-               </bottom>
-               <right>
-                  <VBox prefHeight="200.0" prefWidth="100.0" BorderPane.alignment="CENTER">
-                     <children>
-                        <GridPane prefHeight="386.0" prefWidth="100.0" style="-fx-background-color: #21A4EC;">
+            <GridPane style="-fx-background-color: #d9e4f1;" GridPane.columnIndex="1" GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+               <columnConstraints>
+                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="324.0" minWidth="10.0" prefWidth="321.0" />
+                  <ColumnConstraints hgrow="SOMETIMES" maxWidth="449.0" minWidth="10.0" prefWidth="364.0" />
+               </columnConstraints>
+               <rowConstraints>
+                  <RowConstraints minHeight="10.0" vgrow="SOMETIMES" />
+               </rowConstraints>
+               <children>
+                  <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="540.0" prefWidth="400.0" GridPane.columnIndex="2" GridPane.halignment="RIGHT" GridPane.valignment="BOTTOM">
+                     <center>
+                        <GridPane style="-fx-background-color: #1C2A39;" BorderPane.alignment="CENTER">
                           <columnConstraints>
+                              <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                             <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                           </columnConstraints>
                           <rowConstraints>
@@ -196,38 +66,342 @@
                             <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                           </rowConstraints>
                            <children>
-                              <JFXButton fx:id="sqrt" onAction="#sqrt_click" prefHeight="85.0" prefWidth="108.0" text="√" textFill="#e8e3e3">
+                              <JFXButton fx:id="nine" onAction="#nine_click" prefHeight="110.0" prefWidth="179.0" text="9" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="divide" onAction="#divide_click" prefHeight="85.0" prefWidth="108.0" text="/" textFill="#e8e3e3" GridPane.rowIndex="1">
+                              <JFXButton fx:id="eight" onAction="#eight_click" prefHeight="110.0" prefWidth="179.0" text="8" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="multi" onAction="#multi_click" prefHeight="85.0" prefWidth="108.0" text="X" textFill="#e8e3e3" GridPane.rowIndex="2">
+                              <JFXButton fx:id="seven" onAction="#seven_click" prefHeight="110.0" prefWidth="179.0" text="7" textFill="#e8e3e3" GridPane.rowIndex="1">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="minus" onAction="#minus_click" prefHeight="85.0" prefWidth="108.0" text="-" textFill="#e8e3e3" GridPane.rowIndex="3">
+                              <JFXButton fx:id="six" onAction="#six_click" prefHeight="110.0" prefWidth="179.0" text="6" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="2">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </JFXButton>
-                              <JFXButton fx:id="plus" onAction="#plus_click" prefHeight="85.0" prefWidth="108.0" text="+" textFill="#eeecec" GridPane.rowIndex="4">
+                              <JFXButton fx:id="five" onAction="#five_click" prefHeight="110.0" prefWidth="179.0" text="5" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="four" onAction="#four_click" prefHeight="110.0" prefWidth="179.0" text="4" textFill="#e8e3e3" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="three" onAction="#three_click" prefHeight="110.0" prefWidth="179.0" text="3" textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="two" onAction="#two_click" prefHeight="110.0" prefWidth="179.0" text="2" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="one" onAction="#one_click" prefHeight="110.0" prefWidth="179.0" text="1" textFill="#e8e3e3" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="zero" onAction="#zero_click" prefHeight="110.0" prefWidth="179.0" text="0" textFill="#e8e3e3" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="zerozero" onAction="#zerozero_click" prefHeight="110.0" prefWidth="179.0" text="00" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="point" onAction="#point_click" prefHeight="110.0" prefWidth="179.0" text="." textFill="#e8e3e3" GridPane.columnIndex="2" GridPane.rowIndex="4">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="clear" onAction="#clear_click" prefHeight="110.0" prefWidth="179.0" text="CE" textFill="#e8e3e3" GridPane.columnIndex="1">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="clearall" onAction="#clearall_click" prefHeight="110.0" prefWidth="179.0" text="C" textFill="#e8e3e3" GridPane.columnIndex="2">
+                                 <font>
+                                    <Font size="36.0" />
+                                 </font>
+                              </JFXButton>
+                              <JFXButton fx:id="undo" onAction="#undo_click" prefHeight="110.0" prefWidth="179.0" text="←" textFill="#e8e3e3">
                                  <font>
                                     <Font size="36.0" />
                                  </font>
                               </JFXButton>
                            </children>
                         </GridPane>
+                     </center>
+                     <right>
+                        <VBox prefHeight="518.0" prefWidth="100.0" BorderPane.alignment="CENTER">
+                           <children>
+                              <GridPane prefHeight="542.0" prefWidth="100.0" style="-fx-background-color: #21A4EC;">
+                                <columnConstraints>
+                                  <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                                </columnConstraints>
+                                <rowConstraints>
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                    <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                  <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                                </rowConstraints>
+                                 <children>
+                                    <JFXButton fx:id="sqrt" onAction="#sqrt_click" prefHeight="85.0" prefWidth="108.0" text="√" textFill="#e8e3e3">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="divide" onAction="#divide_click" prefHeight="85.0" prefWidth="108.0" text="/" textFill="#e8e3e3" GridPane.rowIndex="1">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="multi" onAction="#multi_click" prefHeight="85.0" prefWidth="108.0" text="X" textFill="#e8e3e3" GridPane.rowIndex="2">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="minus" onAction="#minus_click" prefHeight="85.0" prefWidth="108.0" text="-" textFill="#e8e3e3" GridPane.rowIndex="3">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </JFXButton>
+                                    <JFXButton fx:id="plus" onAction="#plus_click" prefHeight="85.0" prefWidth="100.0" text="+" textFill="#eeecec" GridPane.rowIndex="4">
+                                       <font>
+                                          <Font size="36.0" />
+                                       </font>
+                                    </JFXButton>
+                                 </children>
+                              </GridPane>
+                           </children>
+                        </VBox>
+                     </right>
+                  </BorderPane>
+               </children>
+               <GridPane.margin>
+                  <Insets left="3.0" />
+               </GridPane.margin>
+            </GridPane>
+            <GridPane GridPane.hgrow="NEVER" GridPane.vgrow="NEVER">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="179.0" minWidth="10.0" prefWidth="137.0" />
+                <ColumnConstraints hgrow="SOMETIMES" maxWidth="264.0" minWidth="10.0" prefWidth="228.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <GridPane>
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" maxWidth="-Infinity" minWidth="10.0" prefWidth="130.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints maxHeight="269.0" minHeight="10.0" prefHeight="140.0" vgrow="SOMETIMES" />
+                      <RowConstraints maxHeight="451.0" minHeight="10.0" prefHeight="399.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <GridPane id="Grid" style="-fx-border-color: #9facbc; -fx-border-width: 2px; -fx-border-radius: 3px;">
+                          <columnConstraints>
+                            <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                          </columnConstraints>
+                          <rowConstraints>
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                              <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                            <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                          </rowConstraints>
+                           <GridPane.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </GridPane.margin>
+                           <padding>
+                              <Insets bottom="1.0" left="1.0" right="1.0" top="1.0" />
+                           </padding>
+                           <children>
+                              <JFXRadioButton fx:id="hexRadio" disable="true" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#hexClicked" prefHeight="14.0" prefWidth="20.0" text="Hex">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="Group" />
+                                 </toggleGroup>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="decRadio" disable="true" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#decClicked" prefHeight="14.0" prefWidth="20.0" selected="true" text="Dec" toggleGroup="$Group" GridPane.rowIndex="1">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <opaqueInsets>
+                                    <Insets />
+                                 </opaqueInsets>
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="octRadio" disable="true" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#octClicked" prefHeight="14.0" prefWidth="20.0" text="Oct" toggleGroup="$Group" GridPane.rowIndex="2">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                              </JFXRadioButton>
+                              <JFXRadioButton fx:id="binRadio" disable="true" maxWidth="-Infinity" minWidth="-Infinity" onMouseClicked="#binClicked" prefHeight="14.0" prefWidth="20.0" text="Bin" toggleGroup="$Group" GridPane.rowIndex="3">
+                                 <font>
+                                    <Font size="22.0" />
+                                 </font>
+                                 <GridPane.margin>
+                                    <Insets left="5.0" />
+                                 </GridPane.margin>
+                              </JFXRadioButton>
+                           </children>
+                        </GridPane>
+                        <JFXCheckBox fx:id="programmerFlag" alignment="TOP_CENTER" onMouseClicked="#programmerFlagChanged" prefHeight="27.0" prefWidth="99.0" text="Programmer" GridPane.halignment="LEFT" GridPane.rowIndex="1" GridPane.valignment="TOP">
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                           <GridPane.margin>
+                              <Insets left="5.0" top="5.0" />
+                           </GridPane.margin>
+                        </JFXCheckBox>
                      </children>
-                  </VBox>
-               </right>
-            </BorderPane>
+                  </GridPane>
+                  <GridPane prefWidth="235.0" style="-fx-background-color: #1C2A39; -fx-border-radius: 5; -fx-border-width: 2px;" GridPane.columnIndex="1">
+                    <columnConstraints>
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                      <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                    </columnConstraints>
+                    <rowConstraints>
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                        <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                      <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                    </rowConstraints>
+                     <children>
+                        <JFXButton fx:id="F" disable="true" onAction="#f_Click" prefHeight="110.0" prefWidth="179.0" text="F" textFill="#e8e3e3">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="A" disable="true" onAction="#A_click" prefHeight="110.0" prefWidth="179.0" text="A" textFill="#e8e3e3" GridPane.columnIndex="1">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="not" disable="true" onAction="#not_Click" prefHeight="110.0" prefWidth="179.0" text="Not" textFill="#e8e3e3" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="B" disable="true" onAction="#b_Click" prefHeight="110.0" prefWidth="179.0" text="B" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton disable="true" onAction="#xor_Click" prefHeight="110.0" prefWidth="179.0" text="Xor" textFill="#e8e3e3" GridPane.rowIndex="2" fx:id="xor">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="C" disable="true" onAction="#c_Click" prefHeight="110.0" prefWidth="179.0" text="C" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="2">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="or" disable="true" onAction="#or_Click" prefHeight="110.0" prefWidth="179.0" text="Or" textFill="#e8e3e3" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="D" disable="true" onAction="#d_Click" prefHeight="110.0" prefWidth="179.0" text="D" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="3">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="and" disable="true" onAction="#and_Click" prefHeight="110.0" prefWidth="179.0" text="And" textFill="#e8e3e3" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                        </JFXButton>
+                        <JFXButton fx:id="E" disable="true" onAction="#e_Click" prefHeight="110.0" prefWidth="179.0" text="E" textFill="#e8e3e3" GridPane.columnIndex="1" GridPane.rowIndex="4">
+                           <font>
+                              <Font size="36.0" />
+                           </font>
+                           <GridPane.margin>
+                              <Insets />
+                           </GridPane.margin>
+                        </JFXButton>
+                     </children>
+                     <GridPane.margin>
+                        <Insets />
+                     </GridPane.margin>
+                  </GridPane>
+               </children>
+               <GridPane.margin>
+                  <Insets />
+               </GridPane.margin>
+            </GridPane>
          </children>
+         <GridPane.margin>
+            <Insets bottom="5.0" right="3.0" />
+         </GridPane.margin>
       </GridPane>
+      <MenuBar prefHeight="25.0" prefWidth="748.0" style="-fx-background-color: #ffffff;">
+        <menus>
+          <Menu mnemonicParsing="false" text="Помощь">
+            <items>
+              <MenuItem mnemonicParsing="false">
+                     <graphic>
+                        <Button fx:id="god" mnemonicParsing="false" onAction="#godHelpClick" text="Запросить помощь" />
+                     </graphic>
+                  </MenuItem>
+            </items>
+          </Menu>
+        </menus>
+         <GridPane.margin>
+            <Insets bottom="2.0" left="2.0" right="2.0" />
+         </GridPane.margin>
+      </MenuBar>
+      <AnchorPane prefHeight="91.0" prefWidth="770.0" style="-fx-background-color: #d9e4f1; -fx-border-color: #b7c0cb; -fx-border-width: 1px 1px 0px 1px;" GridPane.hgrow="NEVER" GridPane.rowIndex="1" GridPane.vgrow="NEVER">
+         <children>
+            <Pane layoutX="8.0" layoutY="14.0" prefHeight="83.0" prefWidth="755.0" style="-fx-border-color: #b7c0cb; -fx-border-width: 2px,2px,2px,2px; -fx-background-color: #ffffff;">
+               <children>
+                  <JFXTextField fx:id="input" alignment="BOTTOM_RIGHT" editable="false" layoutX="7.0" layoutY="28.0" maxHeight="-Infinity" maxWidth="-Infinity" prefHeight="51.0" prefWidth="738.0" promptText="|">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </JFXTextField>
+                  <Label fx:id="prom" alignment="CENTER_RIGHT" layoutX="9.0" layoutY="14.0" prefHeight="21.0" prefWidth="738.0">
+                     <font>
+                        <Font size="15.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+         </children>
+         <GridPane.margin>
+            <Insets />
+         </GridPane.margin>
+      </AnchorPane>
+      <JFXButton fx:id="equal" maxHeight="-Infinity" maxWidth="-Infinity" onAction="#equal_click" prefHeight="161.0" prefWidth="941.0" style="-fx-background-color: FFCF4B; -fx-border-color: #bac6d4;" text="=" GridPane.rowIndex="3">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </JFXButton>
    </children>
 </GridPane>

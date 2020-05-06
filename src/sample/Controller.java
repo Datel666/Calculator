@@ -1,15 +1,23 @@
 package sample;
 
-
 import com.jfoenix.controls.JFXButton;
+import com.jfoenix.controls.JFXCheckBox;
+import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.input.MouseEvent;
+import javafx.scene.layout.GridPane;
 
+import javax.swing.*;
+
+import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Set;
 
 public class Controller {
+
+    // Right buttons section
 
     @FXML
     public JFXButton zero;
@@ -46,144 +54,420 @@ public class Controller {
     @FXML
     public JFXButton equal;
     @FXML
+    public JFXButton sqrt;
+
+
+    //Left buttons section
+
+    @FXML
+    public JFXButton A;
+    @FXML
+    public JFXButton B;
+    @FXML
+    public JFXButton C;
+    @FXML
+    public JFXButton D;
+    @FXML
+    public JFXButton E;
+    @FXML
+    public JFXButton F;
+    @FXML
+    public JFXButton or;
+    @FXML
+    public JFXButton xor;
+    @FXML
+    public JFXButton not;
+    @FXML
+    public JFXButton and;
+
+
+    @FXML
     public JFXTextField input;
     @FXML
     public Label prom;
+
     @FXML
-    public CheckBox ruleCheck;
+    public JFXCheckBox programmerFlag;
 
-    private double fnumber;
+    @FXML
+    public JFXRadioButton hexRadio;
+    @FXML
+    public JFXRadioButton decRadio;
+    @FXML
+    public JFXRadioButton octRadio;
+    @FXML
+    public JFXRadioButton binRadio;
+
+
+    private double fnumber = 0;
     private double snumber;
+    private int lfnumber = 0;
+    private int lsnumber;
     private String operation ="";
+    private int level = 10;
+    private int prlevel;
+    private boolean flag = false;
 
-    public Main kek = new Main();
+
     public Methods mets = new Methods();
 
-
-
-
-    @FXML
     public void point_click(){
        mets.pointSet(input);
+
     }
-    @FXML
+
     public void zero_click(){
         mets.zeroSet(input);
     }
-    @FXML
+
     public void zerozero_click() {
         mets.doublezeroSet(input);
     }
-    @FXML
+
     public void one_click(){
         mets.oneSet(input);
     }
 
-    @FXML
+
     public void two_click(){
         mets.twoSet(input);
     }
-    @FXML
+
     public void three_click(){
         mets.threeSet(input);
     }
-    @FXML
+
     public void four_click(){
         mets.fourSet(input);
     }
-    @FXML
+
     public void five_click(){
         mets.fiveSet(input);
     }
-    @FXML
+
     public void six_click(){
         mets.sixSet(input);
     }
-    @FXML
+
     public void seven_click(){
         mets.sevenSet(input);
     }
-    @FXML
+
     public void eight_click(){
         mets.eightSet(input);
     }
-    @FXML
+
     public void nine_click(){
         mets.nineSet(input);
     }
-    @FXML
-    public void plus_click(){
 
-        Wrapper fvar = new Wrapper(this.fnumber);
-        Wrapper opvar = new Wrapper(operation);
-        mets.plusSet(input,opvar,fvar,prom);
-        operation = (String)opvar.ref1;
-        this.fnumber = (Double)fvar.ref1;
+    public void plus_click(){
+        if (level ==10) {
+
+            Wrapper fvar = new Wrapper(this.fnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.plusSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.fnumber = (Double) fvar.ref1;
+        }
+        else{
+            Wrapper fvar = new Wrapper(this.lfnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.plusSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.lfnumber = (int)fvar.ref1;
+        }
     }
-    @FXML
+
     public void minus_click(){
-        Wrapper fvar = new Wrapper(this.fnumber);
-        Wrapper opvar = new Wrapper(operation);
-        mets.minusSet(input,opvar,fvar,prom);
-        operation = (String)opvar.ref1;
-        this.fnumber = (Double)fvar.ref1;
+        if (level ==10) {
+            Wrapper fvar = new Wrapper(this.fnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.minusSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.fnumber = (Double) fvar.ref1;
+        }
+        else{
+            Wrapper fvar = new Wrapper(this.lfnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.minusSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.lfnumber = (int)fvar.ref1;
+        }
     }
-    @FXML
+
     public void multi_click(){
-        Wrapper fvar = new Wrapper(this.fnumber);
-        Wrapper opvar = new Wrapper(operation);
-        mets.multiSet(input,opvar,fvar,prom);
-        operation = (String)opvar.ref1;
-        this.fnumber = (Double)fvar.ref1;
+        if(level ==10)
+        {
+            Wrapper fvar = new Wrapper(this.fnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.multiSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.fnumber = (Double) fvar.ref1;
+        }
+        else{
+            Wrapper fvar = new Wrapper(this.lfnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.multiSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.lfnumber = (int)fvar.ref1;
+        }
     }
-    @FXML
+
     public void divide_click(){
-        Wrapper fvar = new Wrapper(this.fnumber);
-        Wrapper opvar = new Wrapper(operation);
-        mets.divideSet(input,opvar,fvar,prom);
-        operation = (String)opvar.ref1;
-        this.fnumber = (Double)fvar.ref1;
+        if(level==10) {
+            Wrapper fvar = new Wrapper(this.fnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.divideSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.fnumber = (Double) fvar.ref1;
+        }
+        else{
+            Wrapper fvar = new Wrapper(this.lfnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.divideSet(input, opvar, fvar, prom, level);
+            operation = (String) opvar.ref1;
+            this.lfnumber = (int)fvar.ref1;
+        }
     }
-    @FXML
+
     public void sqrt_click() {
         Wrapper fvar = new Wrapper(this.fnumber);
-        mets.sqrtValue(input,fvar,prom);
-        this.fnumber = (Double)fvar.ref1;
-    }
-
-    @FXML
-    public void equal_click(){
-        Wrapper fvar = new Wrapper(this.fnumber);
-        Wrapper svar = new Wrapper(this.snumber);
         Wrapper opvar = new Wrapper(operation);
-        mets.performLogic(input,opvar,svar,fvar,prom);
+        mets.sqrtValue(input,opvar,fvar,prom,level);
         this.fnumber = (Double)fvar.ref1;
-        this.snumber = (Double)svar.ref1;
-        operation = (String)opvar.ref1;
     }
 
-    @FXML
+
+    public void equal_click(){
+        if ((operation.equals("^"))||(operation.equals("&"))||(operation.equals("|")))
+        {
+            Wrapper fvar = new Wrapper(this.lfnumber);
+            Wrapper svar = new Wrapper(this.lsnumber);
+            Wrapper opvar = new Wrapper(operation);
+            mets.bitwiseLogic(input, opvar, svar, fvar, prom);
+            this.lfnumber = (int) fvar.ref1;
+            this.lsnumber = (int) svar.ref1;
+            operation = (String) opvar.ref1;
+        }
+        else {
+            if (level == 10)
+            {
+                Wrapper fvar = new Wrapper(this.fnumber);
+                Wrapper svar = new Wrapper(this.snumber);
+                Wrapper opvar = new Wrapper(operation);
+                mets.performLogic(input, opvar, svar, fvar, prom, level);
+                this.fnumber = (Double) fvar.ref1;
+                this.snumber = (Double) svar.ref1;
+                operation = (String) opvar.ref1;
+            }
+            else
+                {
+                Wrapper fvar = new Wrapper(this.lfnumber);
+                Wrapper svar = new Wrapper(this.lsnumber);
+                Wrapper opvar = new Wrapper(operation);
+                mets.performLogic(input, opvar, svar, fvar, prom, level);
+                this.lfnumber = (int) fvar.ref1;
+                this.lsnumber = (int) svar.ref1;
+                operation = (String) opvar.ref1;
+            }
+        }
+
+    }
+
     public void clear_click(){
         input.setText("");
         //prom.setText("");
         //this.fnumber=0.0;
         //this.snumber=0;
     }
-    @FXML
+
     public void clearall_click() {
         input.setText("");
         prom.setText("");
         this.fnumber=0.0;
         this.snumber=0.0;
+        this.lfnumber=0;
+        this.lsnumber=0;
     }
-    @FXML
+
     public void undo_click() {
         mets.performUndo(input);
     }
 
-    public void Switch_click(ActionEvent actionEvent) {
-        two.setDisable(!two.isDisabled());
-        three.setDisable(!three.isDisabled());
+
+    public void godHelpClick() {
+
+        JOptionPane.showMessageDialog(null, "Бог поможет!!!", "Помощь" , JOptionPane.INFORMATION_MESSAGE);
+
+    }
+
+    public void hexClicked() {
+        prlevel = level;
+        level = 16;
+            A.setDisable(false);
+            B.setDisable(false);
+            C.setDisable(false);
+            D.setDisable(false);
+            E.setDisable(false);
+            F.setDisable(false);
+            point.setDisable(true);
+            nine.setDisable(false);
+            eight.setDisable(false);
+            seven.setDisable(false);
+            six.setDisable(false);
+            five.setDisable(false);
+            four.setDisable(false);
+            three.setDisable(false);
+            two.setDisable(false);
+        if(input.getText().length()!=0) {
+            mets.adapt(input, level, prlevel);
+        }
+    }
+
+    public void decClicked() {
+        prlevel = level;
+        level = 10;
+            A.setDisable(true);
+            B.setDisable(true);
+            C.setDisable(true);
+            D.setDisable(true);
+            E.setDisable(true);
+            F.setDisable(true);
+            point.setDisable(false);
+            nine.setDisable(false);
+            eight.setDisable(false);
+            seven.setDisable(false);
+            six.setDisable(false);
+            five.setDisable(false);
+            four.setDisable(false);
+            three.setDisable(false);
+            two.setDisable(false);
+        if(input.getText().length()!=0) {
+            mets.adapt(input, level, prlevel);
+        }
+    }
+
+    public void octClicked() {
+        prlevel = level;
+        level = 8;
+
+            A.setDisable(true);
+            B.setDisable(true);
+            C.setDisable(true);
+            D.setDisable(true);
+            E.setDisable(true);
+            F.setDisable(true);
+            point.setDisable(true);
+            nine.setDisable(true);
+            eight.setDisable(true);
+            seven.setDisable(false);
+            six.setDisable(false);
+            five.setDisable(false);
+            four.setDisable(false);
+            three.setDisable(false);
+            two.setDisable(false);
+        if(input.getText().length()!=0) {
+            mets.adapt(input, level, prlevel);
+        }
+    }
+
+    public void binClicked() {
+        prlevel = level;
+        level = 2;
+
+            A.setDisable(true);
+            B.setDisable(true);
+            C.setDisable(true);
+            D.setDisable(true);
+            E.setDisable(true);
+            F.setDisable(true);
+            point.setDisable(true);
+            nine.setDisable(true);
+            eight.setDisable(true);
+            seven.setDisable(true);
+            six.setDisable(true);
+            five.setDisable(true);
+            four.setDisable(true);
+            three.setDisable(true);
+            two.setDisable(true);
+
+            if(input.getText().length()!=0) {
+                mets.adapt(input, level, prlevel);
+            }
+    }
+
+    public void f_Click() {
+        mets.FSet(input);
+    }
+
+    public void A_click() {
+        mets.ASet(input);
+    }
+
+    public void not_Click()
+    {
+        Wrapper fvar = new Wrapper(this.lfnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.notSet(input,opvar,fvar,prom);
+        this.lfnumber = (int)fvar.ref1;
+    }
+
+    public void b_Click() {
+        mets.BSet(input);
+    }
+
+    public void xor_Click() {
+        Wrapper fvar = new Wrapper(this.lfnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.xorSet(input,opvar,fvar,prom);
+        this.lfnumber = (int)fvar.ref1;
+    }
+
+    public void c_Click() {
+        mets.CSet(input);
+    }
+
+    public void or_Click() {
+        Wrapper fvar = new Wrapper(this.lfnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.orSet(input,opvar,fvar,prom);
+        this.lfnumber = (int)fvar.ref1;
+    }
+
+    public void d_Click() {
+        mets.DSet(input);
+    }
+
+    public void and_Click() {
+        Wrapper fvar = new Wrapper(this.lfnumber);
+        Wrapper opvar = new Wrapper(operation);
+        mets.andSet(input,opvar,fvar,prom);
+        this.lfnumber = (int)fvar.ref1;
+    }
+
+    public void e_Click() {
+        mets.ESet(input);
+    }
+
+    public void programmerFlagChanged() {
+        programmerFlag.setSelected(!flag);
+        flag = programmerFlag.isSelected();
+        if(flag == false) {
+            decClicked();
+            clearall_click();
+            sqrt.setDisable(false);
+            decRadio.setSelected(true);
+        }
+        sqrt.setDisable(flag);
+        xor.setDisable(!flag);
+        or.setDisable(!flag);
+        and.setDisable(!flag);
+        not.setDisable(!flag);
+        hexRadio.setDisable(!flag);
+        decRadio.setDisable(!flag);
+        octRadio.setDisable(!flag);
+        binRadio.setDisable(!flag);
     }
 }
 
