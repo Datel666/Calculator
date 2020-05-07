@@ -1,13 +1,10 @@
 package sample;
 
-import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXTextField;
-import com.sun.org.apache.xerces.internal.impl.io.UTF8Reader;
-import javafx.fxml.FXML;
-import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
-import sun.nio.cs.UTF_32;
 
+
+import javax.swing.*;
 import java.math.BigInteger;
 
 
@@ -137,7 +134,7 @@ public class Methods {
             else if ( level == 8 || level ==16)
             {
                 String value = input.getText();
-                int valuenumber = Integer.parseUnsignedInt(value,level);
+                BigInteger valuenumber = new BigInteger(value,level);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "+");
@@ -146,7 +143,7 @@ public class Methods {
             else if (level ==2)
             {
                 String value = input.getText();
-                int valuenumber = binaryToInteger(value);
+                BigInteger valuenumber = new BigInteger(value,2);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "+");
@@ -169,7 +166,7 @@ public class Methods {
             else if ( level == 8 || level ==16)
             {
                 String value = input.getText();
-                int valuenumber = Integer.parseUnsignedInt(value,level);
+                BigInteger valuenumber = new BigInteger(value,level);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "-");
@@ -178,7 +175,7 @@ public class Methods {
             else if (level ==2)
             {
                 String value = input.getText();
-                int valuenumber = binaryToInteger(value);
+                BigInteger valuenumber = new BigInteger(value,2);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "-");
@@ -201,7 +198,7 @@ public class Methods {
             else if ( level == 8 || level ==16)
             {
                 String value = input.getText();
-                int valuenumber = Integer.parseUnsignedInt(value,level);
+                BigInteger valuenumber = new BigInteger(value,level);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "x");
@@ -210,7 +207,7 @@ public class Methods {
             else if (level ==2)
             {
                 String value = input.getText();
-                int valuenumber = binaryToInteger(value);
+                BigInteger valuenumber = new BigInteger(value,2);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "x");
@@ -233,7 +230,7 @@ public class Methods {
             else if (level == 8 || level ==16)
             {
                 String value = input.getText();
-                int valuenumber = Integer.parseUnsignedInt(value,level);
+                BigInteger valuenumber = new BigInteger(value,level);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "/");
@@ -242,7 +239,7 @@ public class Methods {
             else if (level ==2)
             {
                 String value = input.getText();
-                int valuenumber = binaryToInteger(value);
+                BigInteger valuenumber = new BigInteger(value,2);
                 fnumber.ref1 = valuenumber;
                 input.setText("");
                 prom.setText(value + "/");
@@ -250,12 +247,16 @@ public class Methods {
             }
         }
     }
+    public void debug(String val) {
 
+        JOptionPane.showMessageDialog(null, val, "Помощь" , JOptionPane.INFORMATION_MESSAGE);
+
+    }
     public void orSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom){
         if (operation.ref1 =="") {
 
             String value = input.getText();
-            int valuenumber = Integer.parseUnsignedInt(value,2);
+            BigInteger valuenumber = new BigInteger(value,2);
             fnumber.ref1 = valuenumber;
             input.setText("");
             prom.setText(value + "|");
@@ -267,7 +268,7 @@ public class Methods {
         if (operation.ref1 =="") {
 
             String value = input.getText();
-            int valuenumber = Integer.parseUnsignedInt(value,2);
+            BigInteger valuenumber = new BigInteger(value,2);
             fnumber.ref1 = valuenumber;
             input.setText("");
             prom.setText(value + "^");
@@ -279,19 +280,20 @@ public class Methods {
         if (operation.ref1 =="") {
 
             String value = input.getText();
-            int valuenumber = Integer.parseUnsignedInt(value,2);
-            fnumber.ref1 = valuenumber;
+            BigInteger valueand = new BigInteger(value,2);
+            fnumber.ref1 = valueand;
             input.setText("");
             prom.setText(value + "&");
             operation.ref1 = "&";
         }
     }
 
-    public void notSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom){
+    public void notSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
         if (operation.ref1 =="") {
             String value = input.getText();
-            int valuenumber = binaryToInteger(value);
-            fnumber.ref1 = valuenumber;
+            BigInteger valuenumber = new BigInteger(value,level);
+            BigInteger temp = valuenumber.not();
+            fnumber.ref1 = temp;
             if (value =="")
             {
                 prom.setText("0"+"!");
@@ -299,7 +301,7 @@ public class Methods {
             else {
                 prom.setText(value + "!");
             }
-            input.setText(Integer.toBinaryString(~valuenumber));
+            input.setText(temp.toString(level));
             operation.ref1 = "";
         }
     }
@@ -315,15 +317,17 @@ public class Methods {
         }
     }
 
-    public void bitwiseLogic(JFXTextField input,Wrapper operation,Wrapper snumber,Wrapper fnumber,Label prom)
+    public void bitwiseLogic(JFXTextField input,Wrapper operation,Wrapper snumber,Wrapper fnumber,Label prom,int level)
     {
         switch ((String) operation.ref1)
         {
             case "&":
                 String valueand = input.getText();
-                snumber.ref1 = Integer.parseUnsignedInt(valueand,2);
-                int system = (int)fnumber.ref1&(int)snumber.ref1;
-                input.setText(String.valueOf(system));
+                snumber.ref1 = new BigInteger(valueand,2);
+                BigInteger tempand1 = (BigInteger)snumber.ref1;
+                BigInteger tempand2 = (BigInteger)fnumber.ref1;
+                BigInteger systemand = tempand2.and(tempand1);
+                input.setText(systemand.toString(level));
                 String oldprom = prom.getText();
                 prom.setText((oldprom + valueand));
                 operation.ref1 = "";
@@ -331,9 +335,11 @@ public class Methods {
 
             case "|":
                 String valueor = input.getText();
-                snumber.ref1 = Integer.parseUnsignedInt(valueor,2);
-                int systemand = (int)fnumber.ref1|(int)snumber.ref1;
-                input.setText(String.valueOf(systemand));
+                snumber.ref1 = new BigInteger(valueor,2);
+                BigInteger tempor1 = (BigInteger)snumber.ref1;
+                BigInteger tempor2 = (BigInteger)fnumber.ref1;
+                BigInteger systemor = tempor2.or(tempor1);
+                input.setText(systemor.toString(level));
                 String oldpromor = prom.getText();
                 prom.setText((oldpromor + valueor));
                 operation.ref1 = "";
@@ -341,9 +347,11 @@ public class Methods {
 
             case "^":
                 String valuexor = input.getText();
-                snumber.ref1 = Integer.parseUnsignedInt(valuexor,2);
-                int systemxor = (int)fnumber.ref1^(int)snumber.ref1;
-                input.setText(String.valueOf(systemxor));
+                snumber.ref1 = new BigInteger(valuexor,2);
+                BigInteger tempxor1 = (BigInteger)snumber.ref1;
+                BigInteger tempxor2 = (BigInteger)fnumber.ref1;
+                BigInteger systemxor = tempxor2.xor(tempxor1);
+                input.setText(systemxor.toString(level));
                 String oldpromxor = prom.getText();
                 prom.setText((oldpromxor + valuexor));
                 operation.ref1 = "";
@@ -403,9 +411,11 @@ public class Methods {
             {
                 case "+":
                     String value = input.getText();
-                    snumber.ref1 =Integer.parseUnsignedInt(value,level);
-                    int system = (int)fnumber.ref1 + (int)snumber.ref1;
-                    input.setText(Integer.toString(system,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(value,level);
+                    BigInteger tempplus1 = (BigInteger)snumber.ref1;
+                    BigInteger tempplus2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemplus = tempplus2.and(tempplus1);
+                    input.setText(systemplus.toString(level));
                     String oldprom = prom.getText();
                     prom.setText((oldprom + value));
                     operation.ref1 = "";
@@ -413,18 +423,22 @@ public class Methods {
 
                 case "-":
                     String valueminus = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(valueminus,level);
-                    int systemminus = (int)fnumber.ref1 - (int)snumber.ref1;
-                    input.setText(Integer.toString(systemminus,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valueminus,level);
+                    BigInteger tempminus1 = (BigInteger)snumber.ref1;
+                    BigInteger tempminus2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemminus = tempminus2.subtract(tempminus1);
+                    input.setText(systemminus.toString(level));
                     String oldpromminus = prom.getText();
                     prom.setText((oldpromminus + valueminus));
                     operation.ref1 = "";
                     break;
                 case "x":
                     String valuemulti = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(valuemulti,level);
-                    int systemmulti = (int)fnumber.ref1 * (int)snumber.ref1;
-                    input.setText(Integer.toString(systemmulti,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valuemulti,level);
+                    BigInteger tempmulti1 = (BigInteger)snumber.ref1;
+                    BigInteger tempmulti2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemmulti = tempmulti2.multiply(tempmulti1);
+                    input.setText(systemmulti.toString(level));
                     String oldprommulti = prom.getText();
                     prom.setText((oldprommulti + valuemulti));
                     operation.ref1 = "";
@@ -432,9 +446,11 @@ public class Methods {
 
                 case "/":
                     String valuediv = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(valuediv,level);
-                    int systemdiv = (int)fnumber.ref1 / (int)snumber.ref1;
-                    input.setText(Integer.toString(systemdiv,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valuediv,level);
+                    BigInteger tempdiv1 = (BigInteger)snumber.ref1;
+                    BigInteger tempdiv2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemdiv = tempdiv2.divide(tempdiv1);
+                    input.setText(systemdiv.toString(level));
                     String oldpromdiv = prom.getText();
                     prom.setText((oldpromdiv + valuediv));
                     operation.ref1 = "";
@@ -447,9 +463,11 @@ public class Methods {
             {
                 case "+":
                     String value = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(value,level);
-                    int system = (int)fnumber.ref1 + (int)snumber.ref1;
-                    input.setText(Integer.toString(system));
+                    snumber.ref1 = new BigInteger(value,level);
+                    BigInteger tempplus1 = (BigInteger)snumber.ref1;
+                    BigInteger tempplus2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemplus = tempplus1.add(tempplus2);
+                    input.setText(systemplus.toString(2));
                     String oldprom = prom.getText();
                     prom.setText((oldprom + value));
                     operation.ref1 = "";
@@ -457,18 +475,22 @@ public class Methods {
 
                 case "-":
                     String valueminus = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(valueminus,level);
-                    int systemminus = (int)fnumber.ref1 - (int)snumber.ref1;
-                    input.setText(Integer.toString(systemminus,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valueminus,level);
+                    BigInteger tempmminus1 = (BigInteger)snumber.ref1;
+                    BigInteger tempminus2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemminus = tempminus2.subtract(tempmminus1);
+                    input.setText(systemminus.toString(2));
                     String oldpromminus = prom.getText();
                     prom.setText((oldpromminus + valueminus));
                     operation.ref1 = "";
                     break;
                 case "x":
                     String valuemulti = input.getText();
-                    snumber.ref1 =Integer.parseUnsignedInt(valuemulti,level);
-                    int systemmulti = (int)fnumber.ref1 * (int)snumber.ref1;
-                    input.setText(Integer.toString(systemmulti,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valuemulti,level);
+                    BigInteger tempmulti1 = (BigInteger)snumber.ref1;
+                    BigInteger tempmulti2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemmulti = tempmulti2.multiply(tempmulti1);
+                    input.setText(systemmulti.toString(2));
                     String oldprommulti = prom.getText();
                     prom.setText((oldprommulti + valuemulti));
                     operation.ref1 = "";
@@ -476,9 +498,11 @@ public class Methods {
 
                 case "/":
                     String valuediv = input.getText();
-                    snumber.ref1 = Integer.parseUnsignedInt(valuediv,level);
-                    int systemdiv = (int)fnumber.ref1 / (int)snumber.ref1;
-                    input.setText(Integer.toString(systemdiv,level).toUpperCase());
+                    snumber.ref1 = new BigInteger(valuediv,level);
+                    BigInteger tempdiv1 = (BigInteger)snumber.ref1;
+                    BigInteger tempdiv2 = (BigInteger)fnumber.ref1;
+                    BigInteger systemdiv = tempdiv2.divide(tempdiv1);
+                    input.setText(systemdiv.toString(2));
                     String oldpromdiv = prom.getText();
                     prom.setText((oldpromdiv + valuediv));
                     operation.ref1 = "";
@@ -499,14 +523,19 @@ public class Methods {
     }
 
     public void adapt(JFXTextField input, int level, int prlevel){
-        String temp = input.getText();
-        int prevvalue = Integer.parseUnsignedInt(temp,prlevel);
-        input.setText(Integer.toString(prevvalue,level));
+        try {
+            String temp = input.getText();
+            BigInteger prevvalue = new BigInteger(temp, prlevel);
+            input.setText(prevvalue.toString(level));
+        }
+        catch (Exception ex){
+
+        }
     }
 
-    public int binaryToInteger(String binary) {
+    public long binaryToInteger(String binary) {
         char[] numbers = binary.toCharArray();
-        int result = 0;
+        long result = 0;
         for(int i=numbers.length - 1; i>=0; i--)
             if(numbers[i]=='1')
                 result += Math.pow(2, (numbers.length-i - 1));

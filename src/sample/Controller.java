@@ -6,18 +6,14 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.layout.GridPane;
 
 import javax.swing.*;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Set;
+import java.math.BigInteger;
+
 
 public class Controller {
 
-    // Right buttons section
 
     @FXML
     public JFXButton zero;
@@ -100,9 +96,9 @@ public class Controller {
 
 
     private double fnumber = 0;
-    private double snumber;
-    private int lfnumber = 0;
-    private int lsnumber;
+    private double snumber = 0;
+    private BigInteger lfnumber = new BigInteger(String.valueOf(0));
+    private BigInteger lsnumber = new BigInteger(String.valueOf(0));
     private String operation ="";
     private int level = 10;
     private int prlevel;
@@ -175,7 +171,7 @@ public class Controller {
             Wrapper opvar = new Wrapper(operation);
             mets.plusSet(input, opvar, fvar, prom, level);
             operation = (String) opvar.ref1;
-            this.lfnumber = (int)fvar.ref1;
+            this.lfnumber = (BigInteger) fvar.ref1;
         }
     }
 
@@ -192,7 +188,7 @@ public class Controller {
             Wrapper opvar = new Wrapper(operation);
             mets.minusSet(input, opvar, fvar, prom, level);
             operation = (String) opvar.ref1;
-            this.lfnumber = (int)fvar.ref1;
+            this.lfnumber = (BigInteger) fvar.ref1;
         }
     }
 
@@ -210,7 +206,7 @@ public class Controller {
             Wrapper opvar = new Wrapper(operation);
             mets.multiSet(input, opvar, fvar, prom, level);
             operation = (String) opvar.ref1;
-            this.lfnumber = (int)fvar.ref1;
+            this.lfnumber = (BigInteger)fvar.ref1;
         }
     }
 
@@ -227,7 +223,7 @@ public class Controller {
             Wrapper opvar = new Wrapper(operation);
             mets.divideSet(input, opvar, fvar, prom, level);
             operation = (String) opvar.ref1;
-            this.lfnumber = (int)fvar.ref1;
+            this.lfnumber = (BigInteger)fvar.ref1;
         }
     }
 
@@ -240,14 +236,15 @@ public class Controller {
 
 
     public void equal_click(){
-        if ((operation.equals("^"))||(operation.equals("&"))||(operation.equals("|")))
+        if ((operation =="^")||(operation == "&")||(operation =="|"))
         {
+
             Wrapper fvar = new Wrapper(this.lfnumber);
             Wrapper svar = new Wrapper(this.lsnumber);
             Wrapper opvar = new Wrapper(operation);
-            mets.bitwiseLogic(input, opvar, svar, fvar, prom);
-            this.lfnumber = (int) fvar.ref1;
-            this.lsnumber = (int) svar.ref1;
+            mets.bitwiseLogic(input, opvar, svar, fvar, prom,level);
+            this.lfnumber = (BigInteger) fvar.ref1;
+            this.lsnumber = (BigInteger) svar.ref1;
             operation = (String) opvar.ref1;
         }
         else {
@@ -267,8 +264,8 @@ public class Controller {
                 Wrapper svar = new Wrapper(this.lsnumber);
                 Wrapper opvar = new Wrapper(operation);
                 mets.performLogic(input, opvar, svar, fvar, prom, level);
-                this.lfnumber = (int) fvar.ref1;
-                this.lsnumber = (int) svar.ref1;
+                this.lfnumber = (BigInteger) fvar.ref1;
+                this.lsnumber = (BigInteger) svar.ref1;
                 operation = (String) opvar.ref1;
             }
         }
@@ -287,8 +284,15 @@ public class Controller {
         prom.setText("");
         this.fnumber=0.0;
         this.snumber=0.0;
-        this.lfnumber=0;
-        this.lsnumber=0;
+        this.lfnumber= new BigInteger(String.valueOf(0));
+        this.lsnumber= new BigInteger(String.valueOf(0));;
+    }
+    public void semiClear(){
+        prom.setText("");
+        this.fnumber=0.0;
+        this.snumber=0.0;
+        this.lfnumber= new BigInteger(String.valueOf(0));
+        this.lsnumber= new BigInteger(String.valueOf(0));;
     }
 
     public void undo_click() {
@@ -298,7 +302,7 @@ public class Controller {
 
     public void godHelpClick() {
 
-        JOptionPane.showMessageDialog(null, "Бог поможет!!!", "Помощь" , JOptionPane.INFORMATION_MESSAGE);
+        JOptionPane.showMessageDialog(null, operation, "Помощь" , JOptionPane.INFORMATION_MESSAGE);
 
     }
 
@@ -322,6 +326,7 @@ public class Controller {
             two.setDisable(false);
         if(input.getText().length()!=0) {
             mets.adapt(input, level, prlevel);
+            semiClear();
         }
     }
 
@@ -345,6 +350,7 @@ public class Controller {
             two.setDisable(false);
         if(input.getText().length()!=0) {
             mets.adapt(input, level, prlevel);
+            semiClear();
         }
     }
 
@@ -369,6 +375,7 @@ public class Controller {
             two.setDisable(false);
         if(input.getText().length()!=0) {
             mets.adapt(input, level, prlevel);
+            semiClear();
         }
     }
 
@@ -394,6 +401,7 @@ public class Controller {
 
             if(input.getText().length()!=0) {
                 mets.adapt(input, level, prlevel);
+                semiClear();
             }
     }
 
@@ -409,8 +417,8 @@ public class Controller {
     {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
-        mets.notSet(input,opvar,fvar,prom);
-        this.lfnumber = (int)fvar.ref1;
+        mets.notSet(input,opvar,fvar,prom,level);
+        this.lfnumber = (BigInteger) fvar.ref1;
     }
 
     public void b_Click() {
@@ -421,7 +429,8 @@ public class Controller {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
         mets.xorSet(input,opvar,fvar,prom);
-        this.lfnumber = (int)fvar.ref1;
+        this.lfnumber = (BigInteger)fvar.ref1;
+        operation = (String)opvar.ref1;
     }
 
     public void c_Click() {
@@ -432,7 +441,8 @@ public class Controller {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
         mets.orSet(input,opvar,fvar,prom);
-        this.lfnumber = (int)fvar.ref1;
+        this.lfnumber = (BigInteger) fvar.ref1;
+        operation = (String)opvar.ref1;
     }
 
     public void d_Click() {
@@ -443,7 +453,8 @@ public class Controller {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
         mets.andSet(input,opvar,fvar,prom);
-        this.lfnumber = (int)fvar.ref1;
+        this.lfnumber = (BigInteger) fvar.ref1;
+        operation = (String)opvar.ref1;
     }
 
     public void e_Click() {
