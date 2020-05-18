@@ -1,4 +1,4 @@
-package sample;
+package main.java.util;
 
 public class Wrapper {
     public Object ref1; // use this as ref

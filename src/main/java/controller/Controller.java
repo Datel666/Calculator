@@ -1,4 +1,4 @@
-package sample;
+package main.java.controller;
 
 import com.jfoenix.controls.JFXButton;
 import com.jfoenix.controls.JFXCheckBox;
@@ -6,6 +6,8 @@ import com.jfoenix.controls.JFXRadioButton;
 import com.jfoenix.controls.JFXTextField;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import main.java.util.Methods;
+import main.java.util.Wrapper;
 
 import javax.swing.*;
 
@@ -428,7 +430,7 @@ public class Controller {
     public void xor_Click() {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
-        mets.xorSet(input,opvar,fvar,prom);
+        mets.xorSet(input,opvar,fvar,prom,level);
         this.lfnumber = (BigInteger)fvar.ref1;
         operation = (String)opvar.ref1;
     }
@@ -440,7 +442,7 @@ public class Controller {
     public void or_Click() {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
-        mets.orSet(input,opvar,fvar,prom);
+        mets.orSet(input,opvar,fvar,prom,level);
         this.lfnumber = (BigInteger) fvar.ref1;
         operation = (String)opvar.ref1;
     }
@@ -452,7 +454,7 @@ public class Controller {
     public void and_Click() {
         Wrapper fvar = new Wrapper(this.lfnumber);
         Wrapper opvar = new Wrapper(operation);
-        mets.andSet(input,opvar,fvar,prom);
+        mets.andSet(input,opvar,fvar,prom,level);
         this.lfnumber = (BigInteger) fvar.ref1;
         operation = (String)opvar.ref1;
     }

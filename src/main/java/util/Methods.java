@@ -1,15 +1,17 @@
-package sample;
+package main.java.util;
 
 import com.jfoenix.controls.JFXTextField;
 import javafx.scene.control.Label;
 
 
 import javax.swing.*;
+import java.math.BigDecimal;
 import java.math.BigInteger;
 
 
 public class Methods {
 
+    String regExp = "[\\x00-\\x20]*[+-]?(((((\\p{Digit}+)(\\.)?((\\p{Digit}+)?)([eE][+-]?(\\p{Digit}+))?)|(\\.((\\p{Digit}+))([eE][+-]?(\\p{Digit}+))?)|(((0[xX](\\p{XDigit}+)(\\.)?)|(0[xX](\\p{XDigit}+)?(\\.)(\\p{XDigit}+)))[pP][+-]?(\\p{Digit}+)))[fFdD]?))[\\x00-\\x20]*";
 
     public void pointSet(JFXTextField input){
         String oldvalue = input.getText();
@@ -120,7 +122,7 @@ public class Methods {
     }
 
 
-    public void plusSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
+    public void plusSet(JFXTextField input, Wrapper operation, Wrapper fnumber, Label prom, int level){
         if (operation.ref1 =="")
         {
             if(level ==10) {
@@ -252,57 +254,117 @@ public class Methods {
         JOptionPane.showMessageDialog(null, val, "Помощь" , JOptionPane.INFORMATION_MESSAGE);
 
     }
-    public void orSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom){
+    public void orSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
         if (operation.ref1 =="") {
+            if (level==16)
+            {
+                String value = input.getText();
+                BigInteger req1 = new BigInteger(value,16);
+                String req2 = req1.toString();
+                BigInteger valuenumber = new BigInteger(req2, level);
+                fnumber.ref1 = valuenumber;
+                input.setText("");
+                prom.setText(value + "|");
+                operation.ref1 = "|";
+            }
+            else {
+                String value = input.getText();
+                BigInteger req1 = BigInteger.valueOf(((long) Double.parseDouble(value)));
+                String req2 = req1.toString();
+                BigInteger valuenumber = new BigInteger(req2, level);
+                fnumber.ref1 = valuenumber;
+                input.setText("");
+                prom.setText(value + "|");
+                operation.ref1 = "|";
+            }
 
-            String value = input.getText();
-            BigInteger valuenumber = new BigInteger(value,2);
-            fnumber.ref1 = valuenumber;
-            input.setText("");
-            prom.setText(value + "|");
-            operation.ref1 = "|";
         }
     }
 
-    public void xorSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom){
+    public void xorSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
         if (operation.ref1 =="") {
-
+            if (level==16)
+            {
+                String value = input.getText();
+                BigInteger req1 = new BigInteger(value,16);
+                String req2 = req1.toString();
+                BigInteger valuenumber = new BigInteger(req2, level);
+                fnumber.ref1 = valuenumber;
+                input.setText("");
+                prom.setText(value + "^");
+                operation.ref1 = "^";
+            }
+            else{
             String value = input.getText();
-            BigInteger valuenumber = new BigInteger(value,2);
+            BigInteger req1 = BigInteger.valueOf(((long) Double.parseDouble(value)));
+            String req2 = req1.toString();
+            BigInteger valuenumber = new BigInteger(req2, level);
             fnumber.ref1 = valuenumber;
             input.setText("");
             prom.setText(value + "^");
             operation.ref1 = "^";
+            }
+
         }
     }
 
-    public void andSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom){
+    public void andSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
         if (operation.ref1 =="") {
-
+            if (level==16)
+            {
+                String value = input.getText();
+                BigInteger req1 = new BigInteger(value,16);
+                String req2 = req1.toString();
+                BigInteger valueand = new BigInteger(req2,level);
+                fnumber.ref1 = valueand;
+                input.setText("");
+                prom.setText(value + "&");
+                operation.ref1 = "&";
+            }
+            else{
             String value = input.getText();
-            BigInteger valueand = new BigInteger(value,2);
+            BigInteger req1 = BigInteger.valueOf(((long) Double.parseDouble(value)));
+            String req2 = req1.toString();
+            BigInteger valueand = new BigInteger(req2,level);
             fnumber.ref1 = valueand;
             input.setText("");
             prom.setText(value + "&");
             operation.ref1 = "&";
+            }
         }
     }
 
     public void notSet(JFXTextField input,Wrapper operation,Wrapper fnumber,Label prom,int level){
         if (operation.ref1 =="") {
-            String value = input.getText();
-            BigInteger valuenumber = new BigInteger(value,level);
-            BigInteger temp = valuenumber.not();
-            fnumber.ref1 = temp;
-            if (value =="")
+            if (level==16)
             {
-                prom.setText("0"+"!");
+                String value = input.getText();
+                BigInteger req1 = new BigInteger(value,16);
+                BigInteger temp = req1.not();
+                fnumber.ref1 = temp;
+                if (value == "") {
+                    prom.setText("0" + "!");
+                } else {
+                    prom.setText(value + "!");
+                }
+                input.setText(temp.toString(level));
+                operation.ref1 = "";
             }
             else {
-                prom.setText(value + "!");
+                String value = input.getText();
+                BigInteger req1 = BigInteger.valueOf(((long) Double.parseDouble(value)));
+                String req2 = req1.toString();
+                BigInteger valuenumber = new BigInteger(req2, level);
+                BigInteger temp = valuenumber.not();
+                fnumber.ref1 = temp;
+                if (value == "") {
+                    prom.setText("0" + "!");
+                } else {
+                    prom.setText(value + "!");
+                }
+                input.setText(temp.toString(level));
+                operation.ref1 = "";
             }
-            input.setText(temp.toString(level));
-            operation.ref1 = "";
         }
     }
 
@@ -323,7 +385,7 @@ public class Methods {
         {
             case "&":
                 String valueand = input.getText();
-                snumber.ref1 = new BigInteger(valueand,2);
+                snumber.ref1 = new BigInteger(valueand,level);
                 BigInteger tempand1 = (BigInteger)snumber.ref1;
                 BigInteger tempand2 = (BigInteger)fnumber.ref1;
                 BigInteger systemand = tempand2.and(tempand1);
@@ -335,7 +397,7 @@ public class Methods {
 
             case "|":
                 String valueor = input.getText();
-                snumber.ref1 = new BigInteger(valueor,2);
+                snumber.ref1 = new BigInteger(valueor,level);
                 BigInteger tempor1 = (BigInteger)snumber.ref1;
                 BigInteger tempor2 = (BigInteger)fnumber.ref1;
                 BigInteger systemor = tempor2.or(tempor1);
@@ -347,7 +409,8 @@ public class Methods {
 
             case "^":
                 String valuexor = input.getText();
-                snumber.ref1 = new BigInteger(valuexor,2);
+
+                snumber.ref1 = new BigInteger(valuexor,level);
                 BigInteger tempxor1 = (BigInteger)snumber.ref1;
                 BigInteger tempxor2 = (BigInteger)fnumber.ref1;
                 BigInteger systemxor = tempxor2.xor(tempxor1);
