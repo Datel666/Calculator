@@ -1,4 +1,4 @@
 # Calculator
-Simple java calculator. Project made for educational purposes. (Status - rdy)
+Simple Different number systems java calculator.  (Status - rdy)
 
-Different number systems calculator.
+
